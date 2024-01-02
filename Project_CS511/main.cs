@@ -15,8 +15,8 @@ namespace Project_CS511
     public partial class mainForm : Form
     {
         public home homePage;
-        public food foodPage;
-        public payment paymentPage;
+        public message messagePage;
+        public account accountPage;
         public mainForm()
         {
             InitializeComponent();
@@ -33,16 +33,37 @@ namespace Project_CS511
             homePage = new home(this);
             this.Controls.Add(homePage);
 
-            foodPage = new food(this);
-            this.Controls.Add(foodPage);
+            //add message
+            messagePage = new message(this);
+            this.Controls.Add(messagePage);
 
-            paymentPage = new payment(this);
-            this.Controls.Add(paymentPage);
+            //add account
+            accountPage = new account(this);
+            this.Controls.Add(accountPage);
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
+        public void hideAllControls()
         {
+            foreach(Control c in this.Controls)
+            {
+                c.Hide();
+            }
+        }
 
+        public void bringControlToFront(Control c)
+        {
+            c.BringToFront();
+        }
+
+        public void RemoveControlByName(string controlName)
+        {
+            var controlToRemove = Controls.Find(controlName, true).OfType<Control>().FirstOrDefault();
+
+            if (controlToRemove != null)
+            {
+                Controls.Remove(controlToRemove);
+                controlToRemove.Dispose();
+            }
         }
     }
 }

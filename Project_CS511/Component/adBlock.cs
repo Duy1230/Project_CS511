@@ -16,10 +16,5 @@ namespace Project_CS511.Component
         {
             InitializeComponent();
         }
-
-        private void pb_ad_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
